@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import Img2 from "../Images/login-img.svg";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase.js";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 	return (
@@ -35,11 +37,8 @@ const Login = () => {
 								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
 							></input>
 						</div>
-						<div className="">
-							<button
-								type="submit"
-								className="bg-white text-black font-normal rounded-full h-[3rem] w-full"
-							>
+						<div className="flex flex-col gap-[1rem]">
+							<button className="bg-white text-black font-normal rounded-full h-[3rem] w-full">
 								Login
 							</button>
 						</div>
