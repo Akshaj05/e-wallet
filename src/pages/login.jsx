@@ -35,8 +35,11 @@ const Login = () => {
 								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
 							></input>
 						</div>
-						<div className="flex flex-col gap-[1rem]">
-							<button className="bg-white text-black font-normal rounded-full h-[3rem] w-full">
+						<div className="">
+							<button
+								type="submit"
+								className="bg-white text-black font-normal rounded-full h-[3rem] w-full"
+							>
 								Login
 							</button>
 						</div>
