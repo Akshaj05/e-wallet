@@ -3,18 +3,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../firebase.js";
 // import Img1 from "../Images/signup-img.svg";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
 
 const SignUp = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
   const [username, setUsername] = useState("");
   const [pin, setPin] = useState("");
   const [balance, setBalance] = useState(0);
@@ -23,13 +22,13 @@ const SignUp = () => {
     e.preventDefault();
 
     await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
         navigate("/");
-        // ...
-        AddData();
+        // Add data to Firestore
+        await AddData(user.uid);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -43,22 +42,22 @@ const SignUp = () => {
       });
   };
 
-  async function AddData() {
+  async function AddData(userId) {
     const user = {
       username,
       email,
-      phone,
       pin,
       balance,
     };
-    await setDoc(doc(db, "users", ""), user);
+    await setDoc(doc(db, "users", userId), user);
+    console.log("User data added to Firestore");
+    const docSnap = await getDoc(doc(db, "users", userId));
+    if (docSnap.exists()) {
+      console.log("User data:", docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
   }
-
-  const handleGoogle = () => {
-    // handle Google logic here
-    const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
-  };
 
   return (
     <>
@@ -75,13 +74,6 @@ const SignUp = () => {
             <div className="text-[2rem]">
               <h1 className="text-center text-white pb-2  ">SignUp</h1>
             </div>
-            <button
-              onClick={handleGoogle}
-              className="w-[75vw] py-5 text-xl bg-blue-600 text-white mx-auto"
-            >
-              Sign In with Google
-            </button>
-
             <div>
               <input
                 type="text"
@@ -119,18 +111,6 @@ const SignUp = () => {
 
             <div>
               <input
-                type="number"
-                name="phone_num"
-                id="phone_num"
-                placeholder=" Enter Phone Number"
-                onChange={(e) => setPhone(e.target.value)}
-                required
-                className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
-              ></input>
-            </div>
-
-            <div>
-              <input
                 type="password"
                 name="pin"
                 id="pin"
@@ -143,9 +123,9 @@ const SignUp = () => {
 
             <div>
               <input
-                type="password"
-                name="pin"
-                id="pin"
+                type="number"
+                name="balance"
+                id="balance"
                 placeholder=" Enter Balance"
                 onChange={(e) => setBalance(e.target.value)}
                 required
