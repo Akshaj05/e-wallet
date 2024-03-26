@@ -15,9 +15,10 @@ const Login = () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        navigate("/homepage");
+        var user = userCredential.user;
+        let uid = user.uid; // This is the user's uid
+        console.log(uid);
+        navigate("/homepage", { state: { uid: uid } });
       })
       .catch((error) => {
         const errorCode = error.code;
