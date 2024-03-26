@@ -11,6 +11,7 @@ const Homepage = () => {
   const [user, setUser] = useState(null);
   const location = useLocation();
   const uid = location.state.uid;
+
   console.log(uid);
   useEffect(() => {
     const fetchUser = async () => {

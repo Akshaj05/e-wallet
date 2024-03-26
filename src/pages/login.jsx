@@ -3,11 +3,14 @@ import Img2 from "../Images/login-img.svg";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./components/UserContext";
+import { useContext } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUid } = useContext(UserContext);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +21,7 @@ const Login = () => {
         var user = userCredential.user;
         let uid = user.uid; // This is the user's uid
         console.log(uid);
+        setUid(uid);
         navigate("/homepage", { state: { uid: uid } });
       })
       .catch((error) => {
