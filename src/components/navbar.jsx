@@ -1,11 +1,14 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext";
 import Home1 from "../Images/home-logo-purple.svg";
 import Transaction1 from "../Images/transaction-logo-purple.svg";
 import Pointshop1 from "../Images/pointshop-logo-purple.svg";
 import Profile1 from "../Images/profile-logo-purple.svg";
 
-const Navbar = (uid) => {
+const Navbar = () => {
+  const uid = useContext(UserContext);
+  console.log(uid);
   return (
     <div className="flex justify-between bg-lightpurple2 px-5 py-3 absolute bottom-0 w-full">
       <Link to="/homepage ">

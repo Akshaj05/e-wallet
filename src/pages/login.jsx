@@ -3,7 +3,7 @@ import Img2 from "../Images/login-img.svg";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "./components/UserContext";
+import { UserContext } from "../UserContext";
 import { useContext } from "react";
 
 const Login = () => {
@@ -20,8 +20,9 @@ const Login = () => {
         // Signed in
         var user = userCredential.user;
         let uid = user.uid; // This is the user's uid
-        console.log(uid);
+
         setUid(uid);
+        console.log(uid);
         navigate("/homepage", { state: { uid: uid } });
       })
       .catch((error) => {

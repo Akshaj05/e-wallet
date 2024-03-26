@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
-// import { NavLink } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../UserContext";
 // import Homepagebg from "../Images/homepage-bg.png";
-import { useLocation } from "react-router-dom";
 import Navbar from "../components/navbar";
-// import firebase from "firebase/app";
 import { db } from "../firebase";
 import { doc as docRef, getDoc } from "firebase/firestore";
 
 const Homepage = () => {
   const [user, setUser] = useState(null);
-  const location = useLocation();
-  const uid = location.state.uid;
+  const { uid } = useContext(UserContext);
 
   console.log(uid);
   useEffect(() => {

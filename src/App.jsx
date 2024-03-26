@@ -6,14 +6,15 @@ import SignUp from "./pages/signup";
 import Homepage from "./pages/homepage";
 // import SignUp2 from "./pages/signup-2";
 import Transfer from "./pages/transfer";
-import { UserContext } from "./components/UserContext";
+import { UserContext } from "./UserContext";
+import { UserProvider } from "./UserContext";
 
 function App() {
   const [uid, setUid] = useState(null);
   console.log(uid);
   return (
     <>
-      <UserContext.Provider value={{ uid, setUid }}>
+      <UserProvider>
         <div>
           <Router>
             <Routes>
@@ -25,7 +26,7 @@ function App() {
             </Routes>
           </Router>
         </div>
-      </UserContext.Provider>
+      </UserProvider>
     </>
   );
 }
