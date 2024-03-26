@@ -47,7 +47,7 @@ const SignUp = () => {
       username,
       email,
       pin,
-      balance,
+      balance: Number(balance),
     };
     await setDoc(doc(db, "users", userId), user);
     console.log("User data added to Firestore");
