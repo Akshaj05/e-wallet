@@ -1,14 +1,22 @@
 import React, { useContext, useState } from "react";
 import { db } from "../firebase";
-import { doc as docRef, getDoc, updateDoc } from "firebase/firestore";
+import {
+  doc as docRef,
+  getDoc,
+  getDocs,
+  updateDoc,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 import Navbar from "../components/navbar";
 import { UserContext } from "../UserContext";
 
 const Transfer = () => {
-  const uid = useContext(UserContext);
+  const { uid: uid } = useContext(UserContext);
   const [amount, setAmount] = useState(0);
   const [email, setEmail] = useState("");
-
+  console.log(typeof uid, uid);
   const handleTransfer = async (event) => {
     event.preventDefault();
 
