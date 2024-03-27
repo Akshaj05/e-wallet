@@ -16,9 +16,9 @@ const Transfer = () => {
   const { uid: uid } = useContext(UserContext);
   const [amount, setAmount] = useState(0);
   const [email, setEmail] = useState("");
-  const [pin, setPIN] = useState(0);
-  console.log(pin);
-  console.log(typeof uid, uid);
+  const [pin, setPIN] = useState("");
+
+  // console.log(typeof uid, uid);
   const handleTransfer = async (event) => {
     event.preventDefault();
 
@@ -27,19 +27,18 @@ const Transfer = () => {
     const userDocData = await getDoc(userDoc);
     const userBalance = Number(userDocData.data().balance);
     const userPIN = userDocData.data().pin;
-    console.log(userPIN);
-    console.log(userDoc);
+    //Verify Pin
+    if (pin !== userPIN) {
+      console.log("Invalid Pin");
+      return;
+    }
     // Subtract the amount from current user's balance
     const newBalance = userBalance - amount;
     if (newBalance < 0) {
       console.log("Insufficient balance");
       return;
     }
-    // Verify PIN
-    if (pin !== userPIN) {
-      console.log("Invalid PIN");
-      return;
-    }
+
     // Fetch recipient user's UID using their email
     const usersRef = collection(db, "users");
     const q = query(usersRef, where("email", "==", email));
@@ -88,10 +87,11 @@ const Transfer = () => {
           type="password"
           id="pin"
           placeholder="Enter PIN"
-          OnChange={(e) => setPIN(e.target.value)}
+          onChange={(e) => setPIN(e.target.value)}
         />
         <button type="submit">Transfer</button>
       </form>
+      -
       <Navbar />
     </div>
   );
