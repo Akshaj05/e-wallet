@@ -1,64 +1,61 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../UserContext";
-// import Homepagebg from "../Images/homepage-bg.png";
+import Homepagebg from "../Images/homepage-bg.png";
 import Navbar from "../components/navbar";
 import { db } from "../firebase";
 import { doc as docRef, getDoc } from "firebase/firestore";
 
 const Homepage = () => {
-  const [user, setUser] = useState(null);
-  const { uid } = useContext(UserContext);
+	const [user, setUser] = useState(null);
+	const { uid } = useContext(UserContext);
 
-  console.log(uid);
-  useEffect(() => {
-    const fetchUser = async () => {
-      const docReference = docRef(db, "users", uid);
-      const docSnapshot = await getDoc(docReference);
+	console.log(uid);
+	useEffect(() => {
+		const fetchUser = async () => {
+			const docReference = docRef(db, "users", uid);
+			const docSnapshot = await getDoc(docReference);
 
-      if (docSnapshot.exists()) {
-        setUser(docSnapshot.data());
-      } else {
-        console.log("No such document!");
-      }
-    };
+			if (docSnapshot.exists()) {
+				setUser(docSnapshot.data());
+			} else {
+				console.log("No such document!");
+			}
+		};
 
-    fetchUser();
-  }, [uid]);
+		fetchUser();
+	}, [uid]);
 
-  return (
-    <>
-      <div className=" bg-mainbg h-screen w-screen flex flex-col gap-10">
-        <div className="text-[2rem]">
-          <h1 className="text-center text-white pb-2  pt-10">
-            Greetings,
-            <h1 className="text-center text-lightpurple pb-2 text-[2.5rem]">
-              {user ? user.username : "Loading..."}
-            </h1>
-          </h1>
-        </div>
+	return (
+		<>
+			<div className=" bg-mainbg h-screen w-screen flex flex-col gap-10 font">
+				<div className="text-[2rem]">
+					<h1 className="text-center text-white pb-2  pt-10 z-10 relative">
+						Greetings,
+						<h1 className="text-center text-lightpurple pb-2 text-[2rem] z-10 relative leading-[2.5rem]">
+							{user ? user.username : "Loading.."}
+						</h1>
+						<div
+							name="to position the stuff hehe ;)"
+							className="h-[5.6rem] w-full bg-mainbg"
+						></div>
+					</h1>
+				</div>
+				<div className="text-[2rem]"></div>
+				<h1 className="text-center text-white pb-2  pt-10 relative z-10">
+					<h1 className="text-center text-white font-regular pb-2 text-[2.2rem] relative z-10 leading-[5rem]">
+						{user ? user.balance : "Loading.."}
+					</h1>
+				</h1>
+				<img
+					src={Homepagebg}
+					className="absolute h-auto w-auto bottom-0 left-0 z-0 "
+					alt="background"
+				/>
+			</div>
 
-        {/* BALANCE */}
-        <div className="text-[2rem]">
-          <h1 className="text-center text-white pb-2  pt-10">
-            Balance:
-            <h1 className="text-center text-lightpurple pb-2 text-[2.5rem]">
-              {user ? user.balance : "Loading..."}
-            </h1>
-          </h1>
-        </div>
-
-        {/* <div>
-          <img
-            src={Homepagebg}
-            className=" h-auto w-auto overflow-clip z-10"
-            alt="circle"
-          ></img>
-        </div> */}
-        <div></div>
-        <Navbar />
-      </div>
-    </>
-  );
+			<Navbar />
+		</>
+	);
 };
 
 export default Homepage;
