@@ -19,7 +19,7 @@ const Navbar = () => {
           <img src={Transaction1} className=" p-5" alt="Home"></img>
         </div>
       </Link>
-      <Link to="/pointshop">
+      <Link to="/shop">
         <div className="text-white">
           <img src={Pointshop1} className=" p-5" alt="Home"></img>
         </div>

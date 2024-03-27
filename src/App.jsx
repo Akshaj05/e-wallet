@@ -6,6 +6,8 @@ import SignUp from "./pages/signup";
 import Homepage from "./pages/homepage";
 // import SignUp2 from "./pages/signup-2";
 import Transfer from "./pages/transfer";
+import Pointshop from "./pages/pointshop";
+import Profile from "./pages/profile";
 import { UserContext } from "./UserContext";
 import { UserProvider } from "./UserContext";
 
@@ -23,6 +25,8 @@ function App() {
               {/* <Route path="/signup-2" element={<SignUp2 />} /> */}
               <Route path="/homepage" element={<Homepage />} />
               <Route path="/transfer" element={<Transfer />} />
+              <Route path="/shop" element={<Pointshop />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </Router>
         </div>

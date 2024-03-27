@@ -15,7 +15,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [pin, setPin] = useState("");
+  const [pin, setPin] = useState(0);
   const [balance, setBalance] = useState(0);
 
   const onSubmit = async (e) => {
@@ -46,7 +46,7 @@ const SignUp = () => {
     const user = {
       username,
       email,
-      pin,
+      pin: Number(pin),
       balance: Number(balance),
     };
     await setDoc(doc(db, "users", userId), user);
