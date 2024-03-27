@@ -18,6 +18,7 @@ const SignUp = () => {
   const [pin, setPin] = useState(0);
   const [balance, setBalance] = useState(0);
   const points = 0;
+  const transaction_history = [];
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +51,7 @@ const SignUp = () => {
       pin: Number(pin),
       balance: Number(balance),
       points: Number(points),
+      transaction_history,
     };
     await setDoc(doc(db, "users", userId), user);
     console.log("User data added to Firestore");

@@ -16,9 +16,8 @@ const Transfer = () => {
   const { uid: uid } = useContext(UserContext);
   const [amount, setAmount] = useState(0);
   const [email, setEmail] = useState("");
-  const [pin, setPIN] = useState("");
+  const [pin, setPIN] = useState(0);
 
-  // console.log(typeof uid, uid);
   const handleTransfer = async (event) => {
     event.preventDefault();
 
@@ -27,6 +26,7 @@ const Transfer = () => {
     const userDocData = await getDoc(userDoc);
     const userBalance = Number(userDocData.data().balance);
     const userPIN = userDocData.data().pin;
+
     //Verify Pin
     if (pin !== userPIN) {
       console.log("Invalid Pin");
@@ -44,6 +44,7 @@ const Transfer = () => {
     const q = query(usersRef, where("email", "==", email));
     const querySnapshot = await getDocs(q);
     let recipientUID = null;
+
     querySnapshot.forEach((doc) => {
       recipientUID = doc.id;
     });
@@ -64,6 +65,35 @@ const Transfer = () => {
     // Update both balances in the database
     await updateDoc(userDoc, { balance: newBalance });
     await updateDoc(recipientDoc, { balance: recipientNewBalance });
+
+    // Fetch current user's transaction history
+    let userTransactionHistory = userDocData.data().transaction_history;
+    if (!userTransactionHistory) {
+      userTransactionHistory = [];
+    }
+
+    // Add new transaction to the user's history
+    userTransactionHistory.push(`Transferred ${amount} to ${email}`);
+
+    // Update user's transaction history in the database
+    await updateDoc(userDoc, { transaction_history: userTransactionHistory });
+
+    // Fetch recipient's transaction history
+    let recipientTransactionHistory =
+      recipientDocData.data().transaction_history;
+    if (!recipientTransactionHistory) {
+      recipientTransactionHistory = [];
+    }
+
+    // Add new transaction to the recipient's history
+    recipientTransactionHistory.push(
+      `Received ${amount} from ${userDocData.data().email}`
+    );
+
+    // Update recipient's transaction history in the database
+    await updateDoc(recipientDoc, {
+      transaction_history: recipientTransactionHistory,
+    });
 
     console.log("Transfer successful");
   };
@@ -87,7 +117,7 @@ const Transfer = () => {
           type="password"
           id="pin"
           placeholder="Enter PIN"
-          onChange={(e) => setPIN(e.target.value)}
+          onChange={(e) => setPIN(Number(e.target.value))}
         />
         <button type="submit">Transfer</button>
       </form>

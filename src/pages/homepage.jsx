@@ -3,7 +3,15 @@ import { UserContext } from "../UserContext";
 import Homepagebg from "../Images/homepage-bg.png";
 import Navbar from "../components/navbar";
 import { db } from "../firebase";
-import { doc as docRef, getDoc } from "firebase/firestore";
+import {
+  doc as docRef,
+  getDoc,
+  getDocs,
+  updateDoc,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 
 const Homepage = () => {
   const [user, setUser] = useState(null);
@@ -24,7 +32,7 @@ const Homepage = () => {
 
     fetchUser();
   }, [uid]);
-
+  console.log(user);
   return (
     <>
       <div className=" bg-mainbg h-screen w-screen flex flex-col gap-10 font">
@@ -46,6 +54,16 @@ const Homepage = () => {
             {user ? user.balance : "Loading.."}
           </h1>
         </h1>
+        <div className="relative z-10 text-white">
+          Transaction History:
+          <ul>
+            {user &&
+              Array.isArray(user.transaction_history) &&
+              user.transaction_history.map((transaction, index) => (
+                <li key={index}>{transaction}</li>
+              ))}
+          </ul>
+        </div>
         <img
           src={Homepagebg}
           className="absolute h-auto w-auto bottom-0 left-0 z-0 "
