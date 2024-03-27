@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'MainFont';
+    src: url('../public/Montserrat-Black.ttf');
+}
+.mainfont {
+    font-family: 'MainFont';
+}

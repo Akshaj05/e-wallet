@@ -11,9 +11,11 @@ const Pointshop = () => {
 	return (
 		<>
 			<div className="bg-mainbg w-screen h-screen text-white">
-				<h1 className="text-center text-[2.2rem] pt-10">Redeem Points</h1>
-				<h1 className="text-center text-[1.2rem] pb-6">
-					Points Available: 420
+				<h1 className="text-center text-[2.2rem] pt-10 font-mainfont">
+					Redeem Points
+				</h1>
+				<h1 className="text-center text-[1.2rem] pb-6 text-lightpurple ">
+					Points Available: ---{" "}
 				</h1>
 				<div className="flex flex-col gap-7 items-center">
 					<div className="w-[24rem] h-[6.5rem] bg-lightpurple2 rounded-[1.5rem] flex items-center justify-between ">
@@ -28,7 +30,7 @@ const Pointshop = () => {
 								Subcription will be available for 3 months
 							</p>
 						</div>
-						<p className="mr-[2rem]">100 points</p>
+						<p className="mr-[2rem] text-brightpurple">100 points</p>
 					</div>
 					<div className="w-[24rem] h-[6.5rem] bg-lightpurple2 rounded-[1.5rem] flex items-center justify-between ">
 						<img
@@ -42,7 +44,7 @@ const Pointshop = () => {
 								Subcription will be available for 3 months
 							</p>
 						</div>
-						<p className="mr-[2rem]">100 points</p>
+						<p className="mr-[2rem] text-brightpurple">100 points</p>
 					</div>
 					<div className="w-[24rem] h-[6.5rem] bg-lightpurple2 rounded-[1.5rem] flex items-center justify-between ">
 						<img
@@ -56,7 +58,7 @@ const Pointshop = () => {
 								Subcription will be available for 3 months
 							</p>
 						</div>
-						<p className="mr-[2rem]">100 points</p>
+						<p className="mr-[2rem] text-brightpurple">100 points</p>
 					</div>
 					<div className="w-[24rem] h-[6.5rem] bg-lightpurple2 rounded-[1.5rem] flex items-center justify-between ">
 						<img
@@ -70,7 +72,7 @@ const Pointshop = () => {
 								Subcription will be available for 3 months
 							</p>
 						</div>
-						<p className="mr-[2rem]">100 points</p>
+						<p className="mr-[2rem] text-brightpurple">100 points</p>
 					</div>
 					<div className="w-[24rem] h-[6.5rem] bg-lightpurple2 rounded-[1.5rem] flex items-center justify-between ">
 						<img
@@ -84,7 +86,7 @@ const Pointshop = () => {
 								Subcription will be available for 3 months
 							</p>
 						</div>
-						<p className="mr-[2rem]">100 points</p>
+						<p className="mr-[2rem] text-brightpurple">100 points</p>
 					</div>
 				</div>
 			</div>
