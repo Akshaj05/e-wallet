@@ -96,105 +96,108 @@ const SignUp = () => {
   }
 
   return (
-    <>
-      <div
-        name="container"
-        className="w-screen h-screen bg-[#19183E] flex flex-col relative justify-end content-end text-white font-sans "
-      >
-        <img
-          src={Img1}
-          className="h-[20rem] w-[20rem] mx-auto opacity-90"
-        ></img>
-        <div className=" bg-[#28284C] h-auto w-full lg:w-1/4 p-[2.2rem]  rounded-t-[3rem] font-mainFont">
-          <form action="" name="myForm" className="flex flex-col gap-[1.5rem]">
-            <div className="text-[2rem]">
-              <h1 className="text-center text-white pb-2  ">SignUp</h1>
-            </div>
-            <div>
-              <input
-                type="text"
-                name="text"
-                id="text"
-                placeholder=" Username"
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
-              ></input>
-            </div>
+		<>
+			<div
+				name="container"
+				className="w-screen h-screen bg-[#19183E] flex flex-col relative justify-end content-end text-white font-sans "
+			>
+				<img
+					src={Img1}
+					className="h-[15rem] w-[20rem] mx-auto opacity-90"
+				></img>
+				<div className=" bg-[#28284C] h-auto w-full lg:w-1/4 p-[2.2rem]  rounded-t-[3rem] font-mainFont">
+					<form action="" name="myForm" className="flex flex-col gap-[1.5rem]">
+						<div className="text-[2rem]">
+							<h1 className="text-center text-white pb-2  ">SignUp</h1>
+						</div>
+						<div>
+							<input
+								type="text"
+								name="text"
+								id="text"
+								placeholder=" Username"
+								onChange={(e) => setUsername(e.target.value)}
+								required
+								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full  px-5 placeholder:text-[#E5E4E4]"
+							></input>
+						</div>
 
-            <div>
-              <input
-                type="email-address"
-                name="email"
-                id="emailInput"
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter Email"
-                className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
-              ></input>
-            </div>
+						<div>
+							<input
+								type="email-address"
+								name="email"
+								id="emailInput"
+								onChange={(e) => setEmail(e.target.value)}
+								placeholder="Enter Email"
+								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full  px-5 placeholder:text-[#E5E4E4]"
+							></input>
+						</div>
 
-            <div>
-              <input
-                type="password"
-                name="password"
-                id="passwordInput"
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter Password"
-                required
-                className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
-              ></input>
-            </div>
+						<div>
+							<input
+								type="password"
+								name="password"
+								id="passwordInput"
+								onChange={(e) => setPassword(e.target.value)}
+								placeholder="Enter Password"
+								required
+								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full  px-5 placeholder:text-[#E5E4E4]"
+							></input>
+						</div>
 
-            <div>
-              <input
-                type="password"
-                name="pin"
-                id="pin"
-                placeholder=" Enter Transaction Pin"
-                onChange={(e) => setPin(e.target.value)}
-                required
-                className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
-              ></input>
-            </div>
+						<div>
+							<input
+								type="password"
+								name="pin"
+								id="pin"
+								placeholder=" Enter Transaction Pin"
+								onChange={(e) => setPin(e.target.value)}
+								required
+								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full  px-5 placeholder:text-[#E5E4E4]"
+							></input>
+						</div>
 
-            <div>
-              <input
-                type="number"
-                name="balance"
-                id="balance"
-                placeholder=" Enter Balance"
-                onChange={(e) => setBalance(e.target.value)}
-                required
-                className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
-              ></input>
-            </div>
+						<div>
+							<input
+								type="number"
+								name="balance"
+								id="balance"
+								placeholder=" Enter Balance"
+								onChange={(e) => setBalance(e.target.value)}
+								required
+								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full  px-5 placeholder:text-[#E5E4E4]"
+							></input>
+						</div>
 
-            <div>
-              <input
-                type="file"
-                name="profile_img"
-                id="profile_img"
-                placeholder="Upload Profile Picture"
-                onChange={(e) => setProfileImg(e.target.files[0])}
-                className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
-              ></input>
-            </div>
+						<div>
+							<input
+								type="file"
+								name="profile_img"
+								id="profile_img"
+								placeholder="Upload Profile Picture"
+								onChange={(e) => setProfileImg(e.target.files[0])}
+								className=" hidden"
+							></input>
+							<label htmlFor="profile_img" className=" border-b-2">
+								Upload Profile Picture
+							</label>
+						</div>
 
-            <div className="flex flex-col gap-[1rem]">
-              <Link to="/signup">
-                <button
-                  className="bg-white text-black font-normal rounded-full h-[3rem] w-full"
-                  onClick={onSubmit}
-                >
-                  Next
-                </button>
-              </Link>
-            </div>
-          </form>
-        </div>
-      </div>
-    </>
-  );
+						<div className="flex flex-col gap-[1rem]">
+							<Link to="/signup">
+								<button
+									className="bg-white text-mainbg font-normal rounded-full h-[3rem] w-full"
+									onClick={onSubmit}
+								>
+									Submit
+								</button>
+							</Link>
+						</div>
+					</form>
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default SignUp;

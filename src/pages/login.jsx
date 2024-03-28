@@ -57,7 +57,7 @@ const Login = () => {
 								placeholder="Email"
 								required
 								onChange={(e) => setEmail(e.target.value)}
-								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
+								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full px-5 placeholder:text-[#E5E4E4]"
 							></input>
 						</div>
 						<div>
@@ -68,14 +68,14 @@ const Login = () => {
 								placeholder="Password"
 								required
 								onChange={(e) => setPassword(e.target.value)}
-								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
+								className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full px-5 placeholder:text-[#E5E4E4]"
 							></input>
 
 							<div className="flex flex-col gap-[1rem] pt-5">
 								<button
 									type="submit"
 									onClick={onSubmit}
-									className="bg-white text-black font-normal rounded-full h-[3rem] w-full"
+									className="bg-white text-mainbg font-normal rounded-full h-[3rem] w-full"
 								>
 									Login
 								</button>

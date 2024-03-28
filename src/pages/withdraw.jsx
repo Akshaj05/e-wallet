@@ -140,21 +140,14 @@ const Transfer = () => {
 					<h1 className="text-2xl  text-white">Withdraw</h1>
 					<form className="flex flex-col gap-4 mt-4" onSubmit={handleTransfer}>
 						<input
-							className=" bg-mainbg rounded-full h-[2.8rem] w-[18rem] placeholder:font-light text-[0.9rem] placeholder:pl-4"
+							className=" text-white bg-mainbg rounded-full h-[2.8rem] w-[18rem] placeholder:font-light text-[0.9rem] px-5"
 							type="number"
 							id="amount"
 							placeholder="Enter the amount"
 							onChange={(e) => setAmount(Number(e.target.value))}
 						/>
 						<input
-							className=" bg-mainbg rounded-full h-[2.8rem] w-[18rem] placeholder:font-light text-[0.9rem] placeholder:pl-4"
-							type="email"
-							id="email"
-							placeholder="Enter the recipient's email"
-							onChange={(e) => setEmail(e.target.value)}
-						/>
-						<input
-							className=" bg-mainbg rounded-full h-[2.8rem] w-[18rem] placeholder:font-light text-[0.9rem] placeholder:pl-4"
+							className=" text-white bg-mainbg rounded-full h-[2.8rem] w-[18rem] placeholder:font-light text-[0.9rem] px-5"
 							type="password"
 							id="pin"
 							placeholder="Enter PIN"
