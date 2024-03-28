@@ -34,13 +34,13 @@ const Profile = () => {
   return (
     fetchUser(),
     (
-      <div className="bg-mainbg w-screen h-screen">
+      <div className="bg-mainbg w-screen h-screen font-regular">
         <img
           src={Profilebg}
           className="absolute h-auto w-auto bottom-0 left-0 z-0 "
           alt="background"
         />{" "}
-        <div className="w-screen h-screen flex flex-col justify-end gap-8 items-center pb-[12rem]">
+        <div className="w-screen h-screen flex flex-col justify-end gap-8 items-center pb-[12rem] ">
           <div className="z-10">
             <p className=" pr-[14rem] text-white text-[1.2rem] z-10 pb-2">
               Your Name:
