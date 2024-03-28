@@ -14,6 +14,7 @@ export default {
 			brightpurple: "#C242FF",
 			lightpurple: "#8A85E0",
 			lightpurple2: "#2F2C63",
+			lightblue: "#00C9FF",
 			midnight: "#121063",
 			metal: "#565584",
 			tahiti: "#3ab7bf",
