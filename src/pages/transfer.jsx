@@ -73,7 +73,9 @@ const Transfer = () => {
     }
 
     // Add new transaction to the user's history
-    userTransactionHistory.push(`Transferred ${amount} to ${email}`);
+    userTransactionHistory.push(
+      `Transferred ${amount} to ${recipientDocData.data().username}`
+    );
 
     // Update user's transaction history in the database
     await updateDoc(userDoc, { transaction_history: userTransactionHistory });
@@ -87,7 +89,7 @@ const Transfer = () => {
 
     // Add new transaction to the recipient's history
     recipientTransactionHistory.push(
-      `Received ${amount} from ${userDocData.data().email}`
+      `Received ${amount} from ${userDocData.data().username}`
     );
 
     // Update recipient's transaction history in the database

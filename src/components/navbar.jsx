@@ -8,7 +8,7 @@ import Profile1 from "../Images/profile-logo-purple.svg";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between bg-lightpurple2 px-5 py-3 absolute bottom-0 w-full">
+    <div className="flex justify-between bg-lightpurple2 px-5 py-3 fixed z-100 bottom-0 w-full">
       <Link to="/homepage ">
         <div className="text-white">
           <img src={Home1} className=" p-5" alt="Home"></img>
