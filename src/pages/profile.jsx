@@ -18,6 +18,7 @@ const Profile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [balance, setBalance] = useState(0);
+  const [profilepic, setProfilepic] = useState("");
 
   const fetchUser = async () => {
     const docReference = docRef(db, "users", uid);
@@ -27,6 +28,7 @@ const Profile = () => {
       setName(docSnapshot.data().username);
       setEmail(docSnapshot.data().email);
       setBalance(docSnapshot.data().balance);
+      setProfilepic(docSnapshot.data().profile_img);
     } else {
       console.log("No such document!");
     }
@@ -39,7 +41,14 @@ const Profile = () => {
           src={Profilebg}
           className="absolute h-auto w-auto bottom-0 left-0 z-0 "
           alt="background"
-        />{" "}
+        />
+        <div>
+          <img
+            src={profilepic}
+            className="absolute h-[11rem] w-[11rem] top-[4.7rem] right-[7.48rem] rounded-full z-10"
+            alt="profile"
+          />
+        </div>
         <div className="w-screen h-screen flex flex-col justify-end gap-8 items-center pb-[12rem] ">
           <div className="z-10">
             <p className=" pr-[14rem] text-white text-[1.2rem] z-10 pb-2">

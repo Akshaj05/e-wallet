@@ -8,6 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -17,8 +23,10 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [pin, setPin] = useState(0);
   const [balance, setBalance] = useState(0);
+  const [profileImg, setProfileImg] = useState(null);
   const points = 0;
   const transaction_history = [];
+  const storage = getStorage();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -45,6 +53,30 @@ const SignUp = () => {
   };
 
   async function AddData(userId) {
+    const storageRef = ref(storage, `profile_images/${userId}`);
+    const uploadTask = uploadBytesResumable(storageRef, profileImg);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Handle the upload progress
+      },
+      (error) => {
+        // Handle unsuccessful uploads
+        console.log(error);
+      },
+      () => {
+        // Handle successful uploads on complete
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log("File available at", downloadURL);
+          // Add the download URL to the user object
+          user.profile_img = downloadURL;
+          // Then save the user object to Firestore
+          setDoc(doc(db, "users", userId), user);
+        });
+      }
+    );
+
     const user = {
       username,
       email,
@@ -133,6 +165,17 @@ const SignUp = () => {
                 placeholder=" Enter Balance"
                 onChange={(e) => setBalance(e.target.value)}
                 required
+                className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
+              ></input>
+            </div>
+
+            <div>
+              <input
+                type="file"
+                name="profile_img"
+                id="profile_img"
+                placeholder="Upload Profile Picture"
+                onChange={(e) => setProfileImg(e.target.files[0])}
                 className=" bg-transparent border-[0.1rem] border-white rounded-full h-[3rem] w-full placeholder:pl-[1.5rem] placeholder:text-[#E5E4E4]"
               ></input>
             </div>
