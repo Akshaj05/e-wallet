@@ -62,6 +62,18 @@ const Pointshop = () => {
     });
 
     alert("Subscription Redeemed");
+
+    // Fetch current user's transaction history
+    let userTransactionHistory = userDocData.data().transaction_history;
+    if (!userTransactionHistory) {
+      userTransactionHistory = [];
+    }
+
+    // Add new transaction to the user's history
+    userTransactionHistory.push(`Redeemed ${service.name} for 200 points`);
+
+    // Update user's transaction history in the database
+    await updateDoc(userDoc, { transaction_history: userTransactionHistory });
   };
 
   return (
