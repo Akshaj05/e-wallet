@@ -35,12 +35,18 @@ const Transfer = () => {
       console.log("Invalid Pin");
       return;
     }
+
     // Subtract the amount from current user's balance
     const newBalance = userBalance - amount;
     if (newBalance < 0) {
       console.log("Insufficient balance");
       return;
     }
+
+    // Add redeem points
+    const userPoints = userDocData.data().points;
+    const newPoints = userPoints + amount / 300;
+    await updateDoc(userDoc, { points: newPoints });
 
     // Fetch recipient user's UID using their email
     const usersRef = collection(db, "users");
