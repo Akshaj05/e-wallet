@@ -32,13 +32,13 @@ const Transfer = () => {
 
     //Verify Pin
     if (pin !== userPIN) {
-      console.log("Invalid Pin");
+      alert("Invalid Pin");
       return;
     }
     // Subtract the amount from current user's balance
     const newBalance = userBalance - amount;
     if (newBalance < 0) {
-      console.log("Insufficient balance");
+      alert("Insufficient balance");
       return;
     }
 

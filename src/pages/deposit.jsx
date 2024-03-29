@@ -32,7 +32,7 @@ const Transfer = () => {
 
     //Verify Pin
     if (pin !== userPIN) {
-      console.log("Invalid Pin");
+      alert("Invalid Pin");
       return;
     }
     // Add the amount from current user's balance
