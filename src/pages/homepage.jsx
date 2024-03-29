@@ -51,7 +51,7 @@ const Homepage = () => {
         <div className="text-[2rem]"></div>
         <h1 className="text-center text-white pb-2  pt-10 relative z-10">
           <p className="text-center text-white font-regular pt-6 pb-2 pr-2 text-[2rem] relative z-10 leading-tight">
-            ${user ? user.balance : "Loading.."}
+            ₹{user ? user.balance : "Loading.."}
           </p>
           <h1 className="text-center text-lightpurple font-regular pb-2 text-[1rem] relative z-10 leading-tight">
             Balance
