@@ -9,6 +9,7 @@ import Withdraw from "./pages/withdraw";
 import Deposit from "./pages/deposit";
 import Pointshop from "./pages/pointshop";
 import Profile from "./pages/profile";
+import Completed from "./pages/completed";
 import { UserContext } from "./UserContext";
 import { UserProvider } from "./UserContext";
 
@@ -29,6 +30,7 @@ function App() {
 							<Route path="/deposit" element={<Deposit />} />
 							<Route path="/shop" element={<Pointshop />} />
 							<Route path="/profile" element={<Profile />} />
+							<Route path="/completed" element={<Completed />} />
 						</Routes>
 					</Router>
 				</div>
