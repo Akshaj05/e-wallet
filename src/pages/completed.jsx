@@ -13,8 +13,6 @@ const Completed = () => {
 					</p>
 					<Navbar/>
 				</div>
-			
-
 		</>
 	);
 };
