@@ -45,7 +45,7 @@ const Profile = () => {
         <div>
           <img
             src={profilepic}
-            className="absolute h-[11rem] w-[11rem] top-[4.7rem] right-[7.48rem] rounded-full z-10"
+            className="absolute h-[11rem] w-[11rem] top-[4.7rem] right-[7.48rem] rounded-full z-10 bg-cover object-cover"
             alt="profile"
           />
         </div>
