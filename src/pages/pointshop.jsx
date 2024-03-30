@@ -7,7 +7,7 @@ import SonyLiv from "../Images/sonyliv.svg";
 import Prime from "../Images/amazon.svg";
 
 import { UserContext } from "../UserContext";
-
+import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import {
   doc as docRef,
@@ -30,6 +30,7 @@ const Pointshop = () => {
 
   const { uid: uid } = useContext(UserContext);
   const [points, setPoints] = useState(0);
+  const navigate = useNavigate();
 
   // Fetching user points for display purposes
   const fetchUser = async () => {
@@ -74,6 +75,13 @@ const Pointshop = () => {
 
     // Update user's transaction history in the database
     await updateDoc(userDoc, { transaction_history: userTransactionHistory });
+
+    //Navigation to completed page and back to transfer page
+    navigate("/completed");
+
+    setTimeout(() => {
+      navigate("/transfer");
+    }, 3000);
   };
 
   return (
